@@ -10,12 +10,12 @@ sample:	ldr	R0,[R6],#4	@ Load next "instruction" to disassemble.
 
 @	List of data processing type instructions to test disassembly.
 
-tstlst:	mov	R4,#512		@ Move immediate value
-	addne	R1,R5		@ Add with conditional execution
+tstlst:	eor	R5,R6,R7,lsr R8	@ Using four different registers
 	ands	R0,R3,#0xFF	@ Immediate value with setting CPSR bits
-	lsr	R2,R3,#7	@ Move instruction with shift.
 	andeqs	R2,#0b11110	@ Immediate with CPSR bits used twice
+	mov	R4,#512		@ Move immediate value
+	addne	R1,R5		@ Add with conditional execution
+	lsr	R2,R3,#7	@ Move instruction with shift.
 	ror	R5,R2		@ Simple move with rotate
-	eor	R5,R6,R7,lsr R8 @ Using four different registers
 	.word	0		@ End of list of instructions.
 	.end
